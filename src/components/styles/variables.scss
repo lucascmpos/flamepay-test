@@ -1,4 +1,8 @@
-$title-text: #000000;
+$title-text: (
+  color: #000000,
+  font-size: 16px,
+  font-weight: 700,
+);
 $primary-text: #141414;
 $secondary-text: #323232;
 
@@ -13,5 +17,14 @@ $background-li-clicked: #ed7a7a;
 $text-li-default: #ed7a7a;
 $text-li-clicked: #ffffff;
 
-$button-background: #ed7a7a;
-$text-button: #ffffff;
+$button-style: (
+  color: #ffffff,
+  background: #ed7a7a,
+  border: 1px solid #ed7a7a,
+  border-radius: 10px,
+  cursor: pointer,
+  padding: 10px,
+  font-size: 14px,
+  font-weight: 600,
+  width: 80%,
+);
