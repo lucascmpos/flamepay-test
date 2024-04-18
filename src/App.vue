@@ -30,17 +30,16 @@ import DetailsView from "./views/details-view.vue";
 main {
   display: flex;
   flex-direction: row;
-  gap: 10%;
   align-items: center;
 }
 
 .payment-section {
   display: flex;
   flex-direction: row;
-  gap: 10%;
   padding: 2%;
   align-items: center;
   background: $payment-background;
+  border-radius: 0px 10px 10px 0px;
 }
 .progress-div {
   display: flex;

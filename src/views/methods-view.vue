@@ -1,6 +1,6 @@
 <template>
   <section class="method-section">
-    <h1 class="title">Escolha o método de pagamento</h1>
+    <h1 class="method-title">Escolha o método de pagamento</h1>
 
     <ul>
       <li v-for="method in paymentMethods" :key="method">
@@ -49,15 +49,13 @@ const handleButtonClick = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 10%;
-  border-radius: 0px, 10px;
   width: 455px;
-  height: 365px;
+  height: 445px;
   gap: 10%;
+  padding: 3%;
 }
 
-.title {
+.method-title {
   @each $property, $value in $title-text {
     #{$property}: $value;
   }
@@ -70,6 +68,7 @@ ul {
   padding: 0;
   gap: 1rem;
   width: 100%;
+  margin-bottom: 10%;
 }
 
 .radio-label {
