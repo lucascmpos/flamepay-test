@@ -1,23 +1,32 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MethodView from "../views/method-view.vue";
+import PaymentMethods from "../views/methods-view.vue";
+
+import PixMethod from "../views/pix-method.vue";
+import CreditMethod from "../views/credit-method.vue";
+import BankSlipMethod from "../views/bankslip-method.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "home",
-      component: MethodView,
+      name: "Home",
+      component: PaymentMethods,
     },
     {
-      path: "/",
-      name: "home",
-      component: MethodView,
+      path: "/pix",
+      name: "PixMethod",
+      component: PixMethod,
     },
     {
-      path: "/",
-      name: "home",
-      component: MethodView,
+      path: "/credit",
+      name: "CreditMethod",
+      component: CreditMethod,
+    },
+    {
+      path: "/bankslip",
+      name: "BankSlipMethod",
+      component: BankSlipMethod,
     },
   ],
 });

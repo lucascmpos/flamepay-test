@@ -20,12 +20,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import Button from "../components/button.vue";
-const name = "PaymentMethod";
-const selectedMethod = ref<string | null>(null);
+const name = "PaymentMethods";
 
+const router = useRouter();
+
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+import Button from "../components/button.vue";
+import usePaymentRouter from "../composables/usePaymentMethodRouter";
+
+const selectedMethod = ref<string | null>(null);
 const paymentMethods = ["PIX", "Cartão de crédito", "Boleto"];
+
+const { navigateToPaymentMethod } = usePaymentRouter();
+
+const handleButtonClick = () => {
+  if (selectedMethod.value) {
+    navigateToPaymentMethod(selectedMethod.value);
+  }
+};
 </script>
 
 <style lang="scss">
