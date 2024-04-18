@@ -11,19 +11,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-const products = ref([]);
+import useProducts from "../composables/useGetProducts";
 
-onMounted(async () => {
-  try {
-    const response = await fetch("http://localhost:3000/products");
-    if (!response.ok) {
-      throw new Error("Failed to fetch products");
-    }
-    products.value = await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-});
+const { products } = useProducts();
 </script>
 
 <style lang="scss">
