@@ -69,7 +69,8 @@ export default {
     height: 20px;
   }
   @media (max-width: 490px) {
-    width: 200px;
+    width: 400px;
+    height: 20px;
   }
 }
 
