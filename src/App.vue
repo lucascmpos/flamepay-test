@@ -21,6 +21,10 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 }
 
 .payment-section {
