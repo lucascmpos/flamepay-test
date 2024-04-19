@@ -6,11 +6,24 @@
       <form>
         <div>
           <label for="fullName">Nome completo</label>
-          <input type="text" id="fullName" name="fullName" required />
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            v-model="fullName"
+            required
+          />
         </div>
         <div>
           <label for="cpf">CPF do responsável</label>
-          <input type="text" id="cpf" name="cpf" pattern="[0-9]{11}" required />
+          <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            pattern="[0-9]{11}"
+            v-model="cpf"
+            required
+          />
         </div>
       </form>
     </div>
@@ -33,6 +46,8 @@
 import Button from "../components/button.vue";
 import useQRCode from "../composables/useQRCode";
 
+import { mapMutations } from "vuex";
+
 export default {
   name: "PixMethod",
   components: {
@@ -43,21 +58,40 @@ export default {
       qrCodeUrl: "",
       expirationTime: 10 * 60,
       remainingTime: 0,
-      timerInterval: null,
-      fullName: "",
-      cpf: "",
-      errorMessage: "",
+      buttonClicked: false,
     };
   },
-  methods: {
-    handleButtonClick() {
-      const fullName = document.getElementById("fullName").value;
-      const cpf = document.getElementById("cpf").value;
-
-      if (fullName && cpf) {
-        this.$router.push({ name: "FinalStep" });
+  computed: {
+    fullName: {
+      get() {
+        return this.$store.state.fullName;
+      },
+      set(value) {
+        this.updateFullName(value);
+      },
+    },
+    cpf: {
+      get() {
+        return this.$store.state.cpf;
+      },
+      set(value) {
+        this.updateCpf(value);
+      },
+    },
+    errorMessage() {
+      if (this.buttonClicked && (!this.fullName || !this.cpf)) {
+        return "Por favor, preencha todos os campos.";
       } else {
-        this.errorMessage = "Por favor, preencha todos os campos.";
+        return "";
+      }
+    },
+  },
+  methods: {
+    ...mapMutations(["updateFullName", "updateCpf"]),
+    handleButtonClick() {
+      this.buttonClicked = true;
+      if (this.fullName && this.cpf) {
+        this.$router.push({ name: "FinalStep" });
       }
     },
     clearErrorMessage() {

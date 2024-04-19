@@ -2,7 +2,7 @@
   <section>
     <h1>Obrigado por comprar com a gente!</h1>
     <p>
-      Olá, João Vitor. Obrigado por comprar!<br />
+      Olá, {{ fullName }}! Obrigado por comprar!<br />
       O QR CODE abaixo te dá 5% de desconto no site!
     </p>
     <div id="qrcode">
@@ -28,6 +28,11 @@ export default {
     return {
       qrCodeUrl: "",
     };
+  },
+  computed: {
+    fullName() {
+      return this.$store.state.fullName;
+    },
   },
   mounted() {
     const qrCodeContent = "https://github.com/vitorlbarroso/teste-front-flame";

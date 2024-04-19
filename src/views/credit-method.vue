@@ -4,7 +4,13 @@
     <form>
       <div>
         <label for="fullName">Nome completo</label>
-        <input type="text" id="fullName" name="fullName" required />
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          v-model="fullName"
+          required
+        />
       </div>
       <div>
         <label for="cardNumber">Números do cartão</label>
@@ -18,7 +24,14 @@
       </div>
       <div>
         <label for="cpf">CPF do responsável pelo cartão</label>
-        <input type="text" id="cpf" name="cpf" pattern="[0-9]{11}" required />
+        <input
+          type="text"
+          id="cpf"
+          name="cpf"
+          pattern="[0-9]{11}"
+          v-model="cpf"
+          required
+        />
       </div>
       <div class="validityCVV">
         <div class="inputGroup">
@@ -55,6 +68,8 @@
 <script>
 import Button from "../components/button.vue";
 
+import { mapMutations } from "vuex";
+
 export default {
   name: "CreditMethod",
   components: {
@@ -66,6 +81,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["updateFullName", "updateCpf"]),
     handleButtonClick() {
       const fullName = document.getElementById("fullName").value;
       const cardNumber = document.getElementById("cardNumber").value;
@@ -96,6 +112,24 @@ export default {
     inputFields.forEach((input) => {
       input.addEventListener("input", this.clearErrorMessage);
     });
+  },
+  computed: {
+    fullName: {
+      get() {
+        return this.$store.state.fullName;
+      },
+      set(value) {
+        this.updateFullName(value);
+      },
+    },
+    cpf: {
+      get() {
+        return this.$store.state.cpf;
+      },
+      set(value) {
+        this.updateCpf(value);
+      },
+    },
   },
 };
 
