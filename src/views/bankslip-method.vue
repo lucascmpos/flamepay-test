@@ -123,6 +123,10 @@ section {
   @media (max-width: 1000px) {
     width: 465px;
   }
+  @media (max-width: 490px) {
+    width: 200px;
+    height: 450px;
+  }
 }
 label {
   font-size: 12px;

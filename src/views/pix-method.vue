@@ -167,6 +167,10 @@ section {
   width: 465px;
   height: 416px;
   padding: 6%;
+  @media (max-width: 490px) {
+    width: 180px;
+    height: 500px;
+  }
 }
 
 section > div {
@@ -197,10 +201,15 @@ input {
   border: 1px solid #757575;
   width: 200%;
   height: 24px;
+  @media (max-width: 490px) {
+    width: 100%;
+  }
 }
 h1 {
   @each $property, $value in $title-text {
     #{$property}: $value;
+  }
+  @media (max-width: 490px) {
   }
 }
 
@@ -221,6 +230,9 @@ h2 {
   align-items: center;
   justify-content: center;
   margin-top: 5px;
+  @media (max-width: 490px) {
+    width: 180px;
+  }
 }
 
 #cpf {
@@ -228,6 +240,9 @@ h2 {
 }
 Button {
   width: 150%;
+  @media (max-width: 490px) {
+    width: 180px;
+  }
 }
 .error {
   @each $property, $value in $error-text {

@@ -122,6 +122,9 @@ section {
   @media (max-width: 1000px) {
     width: 465px;
   }
+  @media (max-width: 490px) {
+    width: 200px;
+  }
 }
 
 section > h1 {
@@ -141,6 +144,9 @@ input {
   border: 1px solid #757575;
   width: 100%;
   height: 28px;
+  @media (max-width: 490px) {
+    width: 80%;
+  }
 }
 
 label {

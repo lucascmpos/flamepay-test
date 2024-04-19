@@ -79,6 +79,14 @@ section {
   @media (max-width: 1000px) {
     width: 465px;
   }
+  @media (max-width: 490px) {
+    width: 300px;
+  }
+}
+h1 {
+  @media (max-width: 490px) {
+    font-size: 15px;
+  }
 }
 p {
   width: 100%;

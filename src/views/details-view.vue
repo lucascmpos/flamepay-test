@@ -54,6 +54,10 @@ const totalWithShipping = computed(() => {
   @media (max-width: 1000px) {
     border-radius: 10px 10px 0px 0px;
   }
+
+  @media (max-width: 490px) {
+    width: 250px;
+  }
 }
 
 .details-info {

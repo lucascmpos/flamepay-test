@@ -49,6 +49,9 @@ export default {
     border-right: none;
     border-top: 1px solid #d9d9d9;
   }
+  @media (max-width: 490px) {
+    width: 180px;
+  }
 }
 .progress-number {
   display: flex;
@@ -65,6 +68,9 @@ export default {
     width: 80px;
     height: 20px;
   }
+  @media (max-width: 490px) {
+    width: 200px;
+  }
 }
 
 .circle {
@@ -74,6 +80,10 @@ export default {
   border-radius: 100%;
   @media (max-width: 1000px) {
     width: 20px;
+    height: 5px;
+  }
+  @media (max-width: 490px) {
+    width: 15px;
     height: 5px;
   }
 }
