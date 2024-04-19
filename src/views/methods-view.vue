@@ -42,7 +42,7 @@ const handleButtonClick = () => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../components/styles/variables.scss";
 
 .method-section {
@@ -102,6 +102,7 @@ ul {
   }
   &:hover {
     border-color: #ffffff;
+    background-color: #ffffff;
   }
 }
 </style>

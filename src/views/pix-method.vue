@@ -1,14 +1,29 @@
 <template>
-  <section class="pix-section">
-    <h1 class="title">Pagamento via PIX</h1>
-    <h2 class="desc">Faça a leitura do QR CODE para finalizar o pagamento!</h2>
+  <section>
+    <h1>Pagamento via PIX</h1>
+    <h2>Faça a leitura do QR CODE para finalizar o pagamento!</h2>
+    <div>
+      <form>
+        <div>
+          <label for="fullName">Nome completo</label>
+          <input type="text" id="fullName" name="fullName" required />
+        </div>
+        <div>
+          <label for="cpf">CPF do responsável</label>
+          <input type="text" id="cpf" name="cpf" pattern="[0-9]{11}" required />
+        </div>
+      </form>
+    </div>
     <div id="qrcode">
       <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="QR Code" />
+      <p class="timer" v-if="remainingTime > 0">
+        Faltam {{ formatTime(remainingTime) }} para expirar
+      </p>
+      <Button
+        :clickHandler="handleButtonClick"
+        buttonText="Já fiz o pagamento"
+      />
     </div>
-    <p class="timer" v-if="remainingTime > 0">
-      Faltam {{ formatTime(remainingTime) }} para expirar
-    </p>
-    <Button :clickHandler="handleButtonClick" buttonText="Já fiz o pagamento" />
   </section>
 </template>
 
@@ -27,10 +42,21 @@ export default {
       expirationTime: 10 * 60,
       remainingTime: 0,
       timerInterval: null,
+      fullName: "",
+      cpf: "",
     };
   },
   methods: {
-    handleButtonClick() {},
+    handleButtonClick() {
+      // Verifica se todos os campos foram preenchidos
+      if (this.fullName && this.cpf) {
+        // Redireciona para a rota "FinalStep"
+        this.$router.push({ name: "FinalStep" });
+      } else {
+        // Exibe uma mensagem de erro caso algum campo não tenha sido preenchido
+        console.error("Por favor, preencha todos os campos.");
+      }
+    },
     updateRemainingTime() {
       this.remainingTime = Math.max(
         0,
@@ -85,25 +111,54 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../components/styles/variables.scss";
 
-.pix-section {
+section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: 435px;
+  width: 465px;
+  height: 416px;
   padding: 6%;
 }
-.title {
+
+section > div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+section > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+form > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2px;
+}
+
+label {
+  font-size: 12px;
+  margin-top: 1%;
+}
+
+input {
+  border-radius: 3px;
+  border: 1px solid #757575;
+  width: 100%;
+  height: 28px;
+}
+h1 {
   @each $property, $value in $title-text {
     #{$property}: $value;
   }
 }
 
-.desc {
+h2 {
   width: 100%;
   font-size: 12px;
   font-weight: 600;
@@ -115,6 +170,10 @@ export default {
   color: #09a42b;
 }
 #qrcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 3% 0 0 0;
 }
 </style>
