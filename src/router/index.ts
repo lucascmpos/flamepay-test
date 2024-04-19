@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "Home",
+      name: "PaymentMethods",
       component: PaymentMethods,
     },
     {
@@ -35,6 +35,14 @@ const router = createRouter({
       component: FinalStep,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== "PaymentMethods" && !from.name) {
+    next({ name: "PaymentMethods" });
+  } else {
+    next();
+  }
 });
 
 export default router;
