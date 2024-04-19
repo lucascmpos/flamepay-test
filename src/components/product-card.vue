@@ -13,7 +13,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-import useProducts from "../composables/useGetProducts";
+import useProducts from "../composables/useProducts";
 
 const { products } = useProducts();
 </script>

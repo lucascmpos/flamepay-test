@@ -23,7 +23,7 @@
 const name = "DetailsView";
 import { computed } from "vue";
 import ProductCard from "../components/product-card.vue";
-import useProducts from "../composables/useGetProducts";
+import useProducts from "../composables/useProducts";
 
 const { products } = useProducts();
 const totalProductsPrice = computed(() => {
@@ -49,7 +49,6 @@ const totalWithShipping = computed(() => {
   background: $details-background;
   width: 455px;
   height: 455px;
-  gap: 10%;
   padding: 3%;
   border-radius: 10px 0px 0px 10px;
 }

@@ -13,7 +13,6 @@
         <div class="circle" />
         <p class="progress-number">3</p>
       </div>
-
       <RouterView />
     </section>
   </main>
@@ -47,7 +46,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding-right: 10px;
+  padding-right: 2%;
   border-right: 1px solid #d9d9d9;
 }
 .progress-number {
