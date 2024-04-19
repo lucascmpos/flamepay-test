@@ -104,5 +104,17 @@ span {
   overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 10%;
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: #d9d9d9;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ed7a7a;
+    border-radius: 20px;
+  }
+  @supports (-moz-appearance: none) {
+    scrollbar-color: #ed7a7a #d9d9d9;
+  }
 }
 </style>

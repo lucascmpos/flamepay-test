@@ -14,45 +14,20 @@
       </div>
       <div>
         <label for="cardNumber">Números do cartão</label>
-        <input
-          type="text"
-          id="cardNumber"
-          name="cardNumber"
-          pattern="[0-9]{13,16}"
-          required
-        />
+        <input type="text" id="cardNumber" name="cardNumber" required />
       </div>
       <div>
         <label for="cpf">CPF do responsável pelo cartão</label>
-        <input
-          type="text"
-          id="cpf"
-          name="cpf"
-          pattern="[0-9]{11}"
-          v-model="cpf"
-          required
-        />
+        <input type="text" id="cpf" name="cpf" v-model="cpf" required />
       </div>
       <div class="validityCVV">
         <div class="inputGroup">
           <label for="cardValidity">Validade</label>
-          <input
-            type="text"
-            id="cardValidity"
-            name="cardValidity"
-            pattern="(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})"
-            required
-          />
+          <input type="text" id="cardValidity" name="cardValidity" required />
         </div>
         <div class="inputGroup">
           <label for="cvv">CVV</label>
-          <input
-            type="text"
-            id="cvv"
-            name="cvv"
-            pattern="[0-9]{3,4}"
-            required
-          />
+          <input type="text" id="cvv" name="cvv" required />
         </div>
       </div>
     </form>
@@ -132,17 +107,6 @@ export default {
     },
   },
 };
-
-document.addEventListener("DOMContentLoaded", function () {
-  const numericInputs = document.querySelectorAll('input[type="text"]');
-  numericInputs.forEach((input) => {
-    if (input.id !== "fullName") {
-      input.addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, "");
-      });
-    }
-  });
-});
 </script>
 
 <style lang="scss" scoped>

@@ -19,7 +19,6 @@
           type="text"
           id="cpf"
           name="cpf"
-          pattern="[0-9]{11}"
           v-model="cpf"
           @input="clearErrorMessage"
           required
