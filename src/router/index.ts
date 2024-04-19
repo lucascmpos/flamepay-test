@@ -45,4 +45,17 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+let paymentFinished = false;
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== "FinalStep" && paymentFinished) {
+    next({ name: "FinalStep" });
+  } else if (to.name === "FinalStep") {
+    paymentFinished = true;
+    next();
+  } else {
+    next();
+  }
+});
+
 export default router;

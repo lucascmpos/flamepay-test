@@ -53,8 +53,6 @@ export default {
     generateQRCode().then((url) => {
       this.qrCodeUrl = url;
       this.qrCodeGeneratedTime = Date.now();
-      this.updateRemainingTime();
-      this.timerInterval = setInterval(this.updateRemainingTime, 1000);
     });
 
     setInterval(async () => {
