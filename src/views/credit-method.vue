@@ -24,7 +24,7 @@ export default {
       if (fullName && cardNumber && cpf && cardValidity && cvv) {
         this.$router.push({ name: "FinalStep" });
       } else {
-        this.errorMessage = "Por favor, preencha todos os campos.";
+        this.errorMessage = "Por favor, preencha corretamente os campos.";
       }
     },
     clearErrorMessage() {

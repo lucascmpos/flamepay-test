@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 
 import Button from "../components/button.vue";
 import usePaymentRouter from "../composables/usePaymentMethodRouter";
 
 const name = "DetailsView";
-
-const router = useRouter();
 
 const selectedMethod = ref<string | null>(null);
 const paymentMethods = ["PIX", "Cartão de crédito", "Boleto"];

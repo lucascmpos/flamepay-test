@@ -37,7 +37,7 @@ export default {
     },
     errorMessage() {
       if (this.buttonClicked && (!this.fullName || !this.cpf)) {
-        return "Por favor, preencha todos os campos.";
+        return "Por favor, preencha corretamente os campos.";
       } else {
         return "";
       }
