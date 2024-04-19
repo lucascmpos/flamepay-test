@@ -19,10 +19,12 @@
       <p class="timer" v-if="remainingTime > 0">
         Faltam {{ formatTime(remainingTime) }} para expirar
       </p>
+
       <Button
         :clickHandler="handleButtonClick"
         buttonText="Já fiz o pagamento"
       />
+      <p class="error">{{ errorMessage }}</p>
     </div>
   </section>
 </template>
@@ -44,17 +46,26 @@ export default {
       timerInterval: null,
       fullName: "",
       cpf: "",
+      errorMessage: "",
     };
   },
   methods: {
     handleButtonClick() {
-      // Verifica se todos os campos foram preenchidos
-      if (this.fullName && this.cpf) {
-        // Redireciona para a rota "FinalStep"
+      const fullName = document.getElementById("fullName").value;
+      const cpf = document.getElementById("cpf").value;
+
+      if (fullName && cpf) {
         this.$router.push({ name: "FinalStep" });
       } else {
-        // Exibe uma mensagem de erro caso algum campo não tenha sido preenchido
-        console.error("Por favor, preencha todos os campos.");
+        this.errorMessage = "Por favor, preencha todos os campos.";
+      }
+    },
+    clearErrorMessage() {
+      const fullName = document.getElementById("fullName").value;
+      const cpf = document.getElementById("cpf").value;
+
+      if (fullName && cpf) {
+        this.errorMessage = "";
       }
     },
     updateRemainingTime() {
@@ -73,6 +84,10 @@ export default {
     },
   },
   mounted() {
+    const inputFields = document.querySelectorAll('input[type="text"]');
+    inputFields.forEach((input) => {
+      input.addEventListener("input", this.clearErrorMessage);
+    });
     const qrCodeContent = "https://github.com/vitorlbarroso/teste-front-flame";
     const qrCodeOptions = {
       errorCorrectionLevel: "H",
@@ -150,7 +165,7 @@ input {
   border-radius: 3px;
   border: 1px solid #757575;
   width: 100%;
-  height: 28px;
+  height: 24px;
 }
 h1 {
   @each $property, $value in $title-text {
@@ -174,6 +189,15 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 3% 0 0 0;
+  margin-top: 5px;
+}
+
+#cpf {
+  width: 50%;
+}
+.error {
+  @each $property, $value in $error-text {
+    #{$property}: $value;
+  }
 }
 </style>

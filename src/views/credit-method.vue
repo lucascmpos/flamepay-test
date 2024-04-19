@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <style lang="scss" scoped>
+@import "../components/styles/variables.scss";
+
 section {
   display: flex;
   flex-direction: column;
@@ -169,7 +171,8 @@ label {
 }
 
 .error {
-  color: red;
-  font-size: 12px;
+  @each $property, $value in $error-text {
+    #{$property}: $value;
+  }
 }
 </style>
