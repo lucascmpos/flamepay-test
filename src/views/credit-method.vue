@@ -14,20 +14,20 @@
       </div>
       <div>
         <label for="cardNumber">Números do cartão</label>
-        <input type="text" id="cardNumber" name="cardNumber" required />
+        <input type="number" id="cardNumber" name="cardNumber" required />
       </div>
       <div>
         <label for="cpf">CPF do responsável pelo cartão</label>
-        <input type="text" id="cpf" name="cpf" v-model="cpf" required />
+        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
       </div>
       <div class="validityCVV">
         <div class="inputGroup">
           <label for="cardValidity">Validade</label>
-          <input type="text" id="cardValidity" name="cardValidity" required />
+          <input type="number" id="cardValidity" name="cardValidity" required />
         </div>
         <div class="inputGroup">
           <label for="cvv">CVV</label>
-          <input type="text" id="cvv" name="cvv" required />
+          <input type="number" id="cvv" name="cvv" required />
         </div>
       </div>
     </form>

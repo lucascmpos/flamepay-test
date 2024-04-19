@@ -15,14 +15,7 @@
       </div>
       <div>
         <label for="cpf">CPF do responsável</label>
-        <input
-          type="text"
-          id="cpf"
-          name="cpf"
-          pattern="[0-9]{11}"
-          v-model="cpf"
-          required
-        />
+        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
       </div>
     </form>
     <div id="qrcode">
