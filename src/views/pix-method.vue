@@ -2,31 +2,29 @@
   <section>
     <h1>Pagamento via PIX</h1>
     <h2>Faça a leitura do QR CODE para finalizar o pagamento!</h2>
-    <div>
-      <form>
-        <div>
-          <label for="fullName">Nome completo</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            v-model="fullName"
-            required
-          />
-        </div>
-        <div>
-          <label for="cpf">CPF do responsável</label>
-          <input
-            type="text"
-            id="cpf"
-            name="cpf"
-            pattern="[0-9]{11}"
-            v-model="cpf"
-            required
-          />
-        </div>
-      </form>
-    </div>
+    <form>
+      <div>
+        <label for="fullName">Nome completo</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          v-model="fullName"
+          required
+        />
+      </div>
+      <div>
+        <label for="cpf">CPF do responsável</label>
+        <input
+          type="text"
+          id="cpf"
+          name="cpf"
+          pattern="[0-9]{11}"
+          v-model="cpf"
+          required
+        />
+      </div>
+    </form>
     <div id="qrcode">
       <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="QR Code" />
       <p class="timer" v-if="remainingTime > 0">
@@ -167,6 +165,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 465px;
   height: 416px;
   padding: 6%;
@@ -175,7 +174,7 @@ section {
 section > div {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
 }
 section > form {
   display: flex;

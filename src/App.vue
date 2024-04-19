@@ -28,6 +28,7 @@ main {
   flex-direction: row;
   padding: 2%;
   align-items: center;
+  justify-content: center;
   background: $payment-background;
   border-radius: 0px 10px 10px 0px;
 }
