@@ -1,9 +1,3 @@
-<template>
-  <button @click="handleClick">
-    {{ buttonText }}
-  </button>
-</template>
-
 <script>
 export default {
   name: "Button",
@@ -24,6 +18,12 @@ export default {
   },
 };
 </script>
+
+<template>
+  <button @click="handleClick">
+    {{ buttonText }}
+  </button>
+</template>
 
 <style lang="scss">
 @import "../components/styles/variables.scss";

@@ -1,24 +1,3 @@
-<template>
-  <section class="details-section">
-    <h1 class="title">Detalhes da compra</h1>
-
-    <div class="details-info">
-      <div class="prices">
-        <h2 class="products-price">
-          Produtos: <span>{{ totalPrice }}</span>
-        </h2>
-        <h2 class="shipping">Frete: <span>R$ 25.00</span></h2>
-      </div>
-      <h2 class="total">
-        Total: <span>{{ totalWithShipping }}</span>
-      </h2>
-      <div class="products-list">
-        <ProductCard :products="products" />
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup>
 const name = "DetailsView";
 import { computed } from "vue";
@@ -38,10 +17,31 @@ const totalWithShipping = computed(() => {
 });
 </script>
 
+<template>
+  <section>
+    <h1 class="title">Detalhes da compra</h1>
+
+    <div class="details-info">
+      <div class="prices">
+        <h2 class="products-price">
+          Produtos: <span>{{ totalPrice }}</span>
+        </h2>
+        <h2 class="shipping">Frete: <span>R$ 25.00</span></h2>
+      </div>
+      <h2 class="total">
+        Total: <span>{{ totalWithShipping }}</span>
+      </h2>
+      <div class="products-list">
+        <ProductCard :products="products" />
+      </div>
+    </div>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 @import "../components/styles/variables.scss";
 
-.details-section {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,6 +60,11 @@ const totalWithShipping = computed(() => {
   }
 }
 
+.title {
+  @each $property, $value in $title-text {
+    #{$property}: $value;
+  }
+}
 .details-info {
   width: 100%;
 }
@@ -67,11 +72,6 @@ const totalWithShipping = computed(() => {
   display: flex;
   flex-direction: column;
   margin-bottom: 15%;
-}
-.title {
-  @each $property, $value in $title-text {
-    #{$property}: $value;
-  }
 }
 
 .products-price {
@@ -83,15 +83,7 @@ const totalWithShipping = computed(() => {
   display: flex;
   justify-content: space-between;
 }
-.total {
-  @each $property, $value in $primary-text {
-    #{$property}: $value;
-  }
-  padding-top: 1%;
-  border-top: 1px solid #d9d9d9;
-  display: flex;
-  justify-content: space-between;
-}
+
 .shipping {
   @each $property, $value in $primary-text {
     #{$property}: $value;
@@ -103,6 +95,16 @@ const totalWithShipping = computed(() => {
 
 span {
   font-weight: 600;
+}
+
+.total {
+  @each $property, $value in $primary-text {
+    #{$property}: $value;
+  }
+  padding-top: 1%;
+  border-top: 1px solid #d9d9d9;
+  display: flex;
+  justify-content: space-between;
 }
 
 .products-list {

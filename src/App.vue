@@ -1,19 +1,18 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+import DetailsView from "./views/details-view.vue";
+import ProgressBar from "./components/progress-bar.vue";
+</script>
+
 <template>
   <main>
     <DetailsView />
-
     <section class="payment-section">
       <ProgressBar />
       <RouterView />
     </section>
   </main>
 </template>
-
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import DetailsView from "./views/details-view.vue";
-import ProgressBar from "./components/progress-bar.vue";
-</script>
 
 <style lang="scss" scoped>
 @import "./components/styles/variables.scss";

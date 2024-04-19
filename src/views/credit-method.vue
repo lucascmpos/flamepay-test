@@ -1,48 +1,5 @@
-<template>
-  <section>
-    <h1>Preencha os dados do pagamento</h1>
-    <form>
-      <div>
-        <label for="fullName">Nome completo</label>
-        <input
-          type="text"
-          id="fullName"
-          name="fullName"
-          v-model="fullName"
-          required
-        />
-      </div>
-      <div>
-        <label for="cardNumber">Números do cartão</label>
-        <input type="number" id="cardNumber" name="cardNumber" required />
-      </div>
-      <div>
-        <label for="cpf">CPF do responsável pelo cartão</label>
-        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
-      </div>
-      <div class="validityCVV">
-        <div class="inputGroup">
-          <label for="cardValidity">Validade</label>
-          <input type="number" id="cardValidity" name="cardValidity" required />
-        </div>
-        <div class="inputGroup">
-          <label for="cvv">CVV</label>
-          <input type="number" id="cvv" name="cvv" required />
-        </div>
-      </div>
-    </form>
-    <Button
-      class="Button"
-      :clickHandler="handleButtonClick"
-      buttonText="Realizar pagamento"
-    />
-    <p class="error">{{ errorMessage }}</p>
-  </section>
-</template>
-
 <script>
 import Button from "../components/button.vue";
-
 import { mapMutations } from "vuex";
 
 export default {
@@ -109,6 +66,44 @@ export default {
 };
 </script>
 
+<template>
+  <section>
+    <h1>Preencha os dados do pagamento</h1>
+    <form>
+      <div>
+        <label for="fullName">Nome completo</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          v-model="fullName"
+          required
+        />
+      </div>
+      <div>
+        <label for="cardNumber">Números do cartão</label>
+        <input type="number" id="cardNumber" name="cardNumber" required />
+      </div>
+      <div>
+        <label for="cpf">CPF do responsável pelo cartão</label>
+        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
+      </div>
+      <div class="validityCVV">
+        <div class="lastInputs">
+          <label for="cardValidity">Validade</label>
+          <input type="number" id="cardValidity" name="cardValidity" required />
+        </div>
+        <div class="lastInputs">
+          <label for="cvv">CVV</label>
+          <input type="number" id="cvv" name="cvv" required />
+        </div>
+      </div>
+    </form>
+    <Button :clickHandler="handleButtonClick" buttonText="Realizar pagamento" />
+    <p class="error">{{ errorMessage }}</p>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 @import "../components/styles/variables.scss";
 
@@ -132,11 +127,6 @@ section > h1 {
 }
 form > div {
   margin-bottom: 10px;
-}
-
-.inputGroup {
-  display: flex;
-  flex-direction: column;
 }
 
 input {
@@ -172,7 +162,12 @@ label {
   justify-content: flex-start;
 }
 
-.Button {
+.lastInputs {
+  display: flex;
+  flex-direction: column;
+}
+
+Button {
   margin-top: 5%;
   width: 70%;
 }

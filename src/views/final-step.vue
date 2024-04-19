@@ -1,20 +1,3 @@
-<template>
-  <section>
-    <h1>Obrigado por comprar com a gente!</h1>
-    <p>
-      Olá, {{ fullName }}! Obrigado por comprar!<br />
-      O QR CODE abaixo te dá 5% de desconto no site!
-    </p>
-    <div id="qrcode">
-      <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="QR Code" />
-    </div>
-    <Button
-      :clickHandler="handleButtonClick"
-      buttonText="Voltar ao marketplace"
-    />
-  </section>
-</template>
-
 <script>
 import useQRCode from "../composables/useQRCode";
 import Button from "../components/button.vue";
@@ -67,6 +50,23 @@ export default {
   },
 };
 </script>
+
+<template>
+  <section>
+    <h1>Obrigado por comprar com a gente!</h1>
+    <p>
+      Olá, {{ fullName }}! Obrigado por comprar!<br />
+      O QR CODE abaixo te dá 5% de desconto no site!
+    </p>
+    <div id="qrcode">
+      <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="QR Code" />
+    </div>
+    <Button
+      :clickHandler="handleButtonClick"
+      buttonText="Voltar ao marketplace"
+    />
+  </section>
+</template>
 
 <style lang="scss" scoped>
 section {

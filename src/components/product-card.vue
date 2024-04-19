@@ -1,3 +1,11 @@
+<script setup>
+import { ref, onMounted } from "vue";
+
+import useProducts from "../composables/useProducts";
+
+const { products } = useProducts();
+</script>
+
 <template>
   <section>
     <div v-for="product in products" :key="product.id" class="product-card">
@@ -10,14 +18,6 @@
   </section>
 </template>
 
-<script setup>
-import { ref, onMounted } from "vue";
-
-import useProducts from "../composables/useProducts";
-
-const { products } = useProducts();
-</script>
-
 <style lang="scss">
 @import "./styles/variables.scss";
 
@@ -29,6 +29,7 @@ const { products } = useProducts();
   border-left: 4px solid #ed7a7a;
   padding: 1%;
   margin-bottom: 2%;
+  width: 85%;
 }
 
 .product-info {

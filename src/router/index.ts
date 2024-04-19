@@ -4,7 +4,7 @@ import PaymentMethods from "../views/methods-view.vue";
 import PixMethod from "../views/pix-method.vue";
 import CreditMethod from "../views/credit-method.vue";
 import BankSlipMethod from "../views/bankslip-method.vue";
-import FinalStep from "../views/finalstep.vue";
+import FinalStep from "../views/final-step.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +30,7 @@ const router = createRouter({
       component: BankSlipMethod,
     },
     {
-      path: "/finalstep",
+      path: "/final-step",
       name: "FinalStep",
       component: FinalStep,
     },

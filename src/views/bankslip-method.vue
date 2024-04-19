@@ -1,47 +1,3 @@
-<template>
-  <section>
-    <h1>Pagamento por boleto</h1>
-    <form>
-      <div>
-        <label for="fullName">Nome completo</label>
-        <input
-          type="text"
-          id="fullName"
-          name="fullName"
-          v-model="fullName"
-          @input="clearErrorMessage"
-          required
-        />
-      </div>
-      <div>
-        <label for="cpf">CPF do responsável</label>
-        <input
-          type="text"
-          id="cpf"
-          name="cpf"
-          v-model="cpf"
-          @input="clearErrorMessage"
-          required
-        />
-      </div>
-    </form>
-    <p class="text">
-      Copie e cole o código no seu banco <br />
-      Ou leve até uma lotérica da Caixa para realizar o pagamento!
-    </p>
-    <p class="bankSlipCode" ref="bankSlipCode">
-      8949461894984 6515648916 6548964631668
-    </p>
-    <p class="copyCode" @click="copyCode">{{ copyText }}</p>
-    <Button
-      class="Button"
-      :clickHandler="handleButtonClick"
-      buttonText="Já fiz o pagamento"
-    />
-    <p class="error">{{ errorMessage }}</p>
-  </section>
-</template>
-
 <script>
 import Button from "../components/button.vue";
 import { mapMutations } from "vuex";
@@ -91,7 +47,10 @@ export default {
       }
     },
     clearErrorMessage() {
-      if (this.fullName && this.cpf) {
+      const fullName = document.getElementById("fullName").value;
+      const cpf = document.getElementById("cpf").value;
+
+      if (fullName && cpf) {
         this.errorMessage = "";
       }
     },
@@ -108,6 +67,42 @@ export default {
   },
 };
 </script>
+
+<template>
+  <section>
+    <h1>Pagamento por boleto</h1>
+    <form>
+      <div>
+        <label for="fullName">Nome completo</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          v-model="fullName"
+          required
+        />
+      </div>
+      <div>
+        <label for="cpf">CPF do responsável</label>
+        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
+      </div>
+    </form>
+    <p class="text">
+      Copie e cole o código no seu banco <br />
+      Ou leve até uma lotérica da Caixa para realizar o pagamento!
+    </p>
+    <p class="bankSlipCode" ref="bankSlipCode">
+      8949461894984 6515648916 6548964631668
+    </p>
+    <p class="copyCode" @click="copyCode">{{ copyText }}</p>
+    <Button
+      class="Button"
+      :clickHandler="handleButtonClick"
+      buttonText="Já fiz o pagamento"
+    />
+    <p class="error">{{ errorMessage }}</p>
+  </section>
+</template>
 
 <style lang="scss" scoped>
 @import "../components/styles/variables.scss";

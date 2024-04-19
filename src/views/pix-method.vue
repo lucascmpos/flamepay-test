@@ -1,38 +1,3 @@
-<template>
-  <section>
-    <h1>Pagamento via PIX</h1>
-    <h2>Faça a leitura do QR CODE para finalizar o pagamento!</h2>
-    <form>
-      <div>
-        <label for="fullName">Nome completo</label>
-        <input
-          type="text"
-          id="fullName"
-          name="fullName"
-          v-model="fullName"
-          required
-        />
-      </div>
-      <div>
-        <label for="cpf">CPF do responsável</label>
-        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
-      </div>
-    </form>
-    <div id="qrcode">
-      <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="QR Code" />
-      <p class="timer" v-if="remainingTime > 0">
-        Faltam {{ formatTime(remainingTime) }} para expirar
-      </p>
-
-      <Button
-        :clickHandler="handleButtonClick"
-        buttonText="Já fiz o pagamento"
-      />
-      <p class="error">{{ errorMessage }}</p>
-    </div>
-  </section>
-</template>
-
 <script>
 import Button from "../components/button.vue";
 import useQRCode from "../composables/useQRCode";
@@ -149,6 +114,41 @@ export default {
 };
 </script>
 
+<template>
+  <section>
+    <h1>Pagamento via PIX</h1>
+    <h2>Faça a leitura do QR CODE para finalizar o pagamento!</h2>
+    <form>
+      <div>
+        <label for="fullName">Nome completo</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          v-model="fullName"
+          required
+        />
+      </div>
+      <div>
+        <label for="cpf">CPF do responsável</label>
+        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
+      </div>
+    </form>
+    <div id="qrcode">
+      <img v-if="qrCodeUrl" :src="qrCodeUrl" alt="QR Code" />
+      <p class="timer" v-if="remainingTime > 0">
+        Faltam {{ formatTime(remainingTime) }} para expirar
+      </p>
+
+      <Button
+        :clickHandler="handleButtonClick"
+        buttonText="Já fiz o pagamento"
+      />
+      <p class="error">{{ errorMessage }}</p>
+    </div>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 @import "../components/styles/variables.scss";
 
@@ -164,6 +164,21 @@ section {
     width: 180px;
     height: 500px;
   }
+}
+
+h1 {
+  @each $property, $value in $title-text {
+    #{$property}: $value;
+  }
+  @media (max-width: 490px) {
+  }
+}
+
+h2 {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3a3a3a;
 }
 
 section > div {
@@ -198,20 +213,7 @@ input {
     width: 100%;
   }
 }
-h1 {
-  @each $property, $value in $title-text {
-    #{$property}: $value;
-  }
-  @media (max-width: 490px) {
-  }
-}
 
-h2 {
-  width: 100%;
-  font-size: 12px;
-  font-weight: 600;
-  color: #3a3a3a;
-}
 .timer {
   font-size: 12px;
   font-weight: 600;

@@ -1,7 +1,29 @@
-<template>
-  <section class="method-section">
-    <h1 class="method-title">Escolha o método de pagamento</h1>
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+import Button from "../components/button.vue";
+import usePaymentRouter from "../composables/usePaymentMethodRouter";
+
+const name = "DetailsView";
+
+const router = useRouter();
+
+const selectedMethod = ref<string | null>(null);
+const paymentMethods = ["PIX", "Cartão de crédito", "Boleto"];
+
+const { navigateToPaymentMethod } = usePaymentRouter();
+
+const handleButtonClick = () => {
+  if (selectedMethod.value) {
+    navigateToPaymentMethod(selectedMethod.value);
+  }
+};
+</script>
+
+<template>
+  <section>
+    <h1>Escolha o método de pagamento</h1>
     <ul>
       <li v-for="method in paymentMethods" :key="method">
         <label class="radio-label" :for="method">
@@ -19,33 +41,10 @@
   </section>
 </template>
 
-<script setup lang="ts">
-const name = "PaymentMethods";
-
-const router = useRouter();
-
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-
-import Button from "../components/button.vue";
-import usePaymentRouter from "../composables/usePaymentMethodRouter";
-
-const selectedMethod = ref<string | null>(null);
-const paymentMethods = ["PIX", "Cartão de crédito", "Boleto"];
-
-const { navigateToPaymentMethod } = usePaymentRouter();
-
-const handleButtonClick = () => {
-  if (selectedMethod.value) {
-    navigateToPaymentMethod(selectedMethod.value);
-  }
-};
-</script>
-
 <style lang="scss" scoped>
 @import "../components/styles/variables.scss";
 
-.method-section {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +60,7 @@ const handleButtonClick = () => {
   }
 }
 
-.method-title {
+h1 {
   @each $property, $value in $title-text {
     #{$property}: $value;
   }

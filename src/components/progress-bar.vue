@@ -1,17 +1,3 @@
-<template>
-  <div class="progress-div">
-    <p :class="{ 'progress-number': true, active: isStepActive(1) }">1</p>
-    <div :class="{ circle: true, active: isStepActive(1) }" />
-    <div :class="{ circle: true, active: isStepActive(1) }" />
-    <div :class="{ circle: true, active: isStepActive(1) }" />
-    <p :class="{ 'progress-number': true, active: isStepActive(2) }">2</p>
-    <div :class="{ circle: true, active: isStepActive(2) }" />
-    <div :class="{ circle: true, active: isStepActive(2) }" />
-    <div :class="{ circle: true, active: isStepActive(2) }" />
-    <p :class="{ 'progress-number': true, active: isStepActive(3) }">3</p>
-  </div>
-</template>
-
 <script>
 export default {
   name: "ProgressBar",
@@ -25,7 +11,7 @@ export default {
         (step === 1 || step === 2)
       ) {
         return true;
-      } else if (path === "/finalstep") {
+      } else if (path === "/final-step") {
         return true;
       }
       return false;
@@ -33,6 +19,20 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="progress-div">
+    <p :class="{ 'progress-number': true, active: isStepActive(1) }">1</p>
+    <div :class="{ circle: true, active: isStepActive(1) }" />
+    <div :class="{ circle: true, active: isStepActive(1) }" />
+    <div :class="{ circle: true, active: isStepActive(1) }" />
+    <p :class="{ 'progress-number': true, active: isStepActive(2) }">2</p>
+    <div :class="{ circle: true, active: isStepActive(2) }" />
+    <div :class="{ circle: true, active: isStepActive(2) }" />
+    <div :class="{ circle: true, active: isStepActive(2) }" />
+    <p :class="{ 'progress-number': true, active: isStepActive(3) }">3</p>
+  </div>
+</template>
 
 <style lang="scss">
 .progress-div {
