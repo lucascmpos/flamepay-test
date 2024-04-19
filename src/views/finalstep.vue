@@ -76,6 +76,9 @@ section {
   align-items: center;
   width: 455px;
   height: 475px;
+  @media (max-width: 1000px) {
+    width: 465px;
+  }
 }
 p {
   width: 100%;

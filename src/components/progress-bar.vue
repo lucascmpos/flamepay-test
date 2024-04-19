@@ -43,6 +43,12 @@ export default {
   gap: 6px;
   padding-right: 2%;
   border-right: 1px solid #d9d9d9;
+  @media (max-width: 1000px) {
+    flex-direction: row;
+    gap: 10%;
+    border-right: none;
+    border-top: 1px solid #d9d9d9;
+  }
 }
 .progress-number {
   display: flex;
@@ -55,6 +61,10 @@ export default {
   color: #ffff;
   font-size: 11px;
   font-weight: 700;
+  @media (max-width: 1000px) {
+    width: 80px;
+    height: 20px;
+  }
 }
 
 .circle {
@@ -62,6 +72,10 @@ export default {
   width: 6px;
   height: 6px;
   border-radius: 100%;
+  @media (max-width: 1000px) {
+    width: 20px;
+    height: 5px;
+  }
 }
 
 .active {

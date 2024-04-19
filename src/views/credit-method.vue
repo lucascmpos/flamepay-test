@@ -119,6 +119,9 @@ section {
   align-items: center;
   width: 435px;
   height: 475px;
+  @media (max-width: 1000px) {
+    width: 465px;
+  }
 }
 
 section > h1 {

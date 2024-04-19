@@ -53,6 +53,9 @@ const handleButtonClick = () => {
   height: 445px;
   gap: 10%;
   padding: 3%;
+  @media (max-width: 1000px) {
+    width: 465px;
+  }
 }
 
 .method-title {

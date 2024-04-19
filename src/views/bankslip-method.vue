@@ -120,6 +120,9 @@ section {
   width: 600px;
   height: 403px;
   padding: 6%;
+  @media (max-width: 1000px) {
+    width: 465px;
+  }
 }
 label {
   font-size: 12px;

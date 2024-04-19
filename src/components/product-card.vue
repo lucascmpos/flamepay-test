@@ -27,7 +27,7 @@ const { products } = useProducts();
   justify-content: space-between;
   background: #d9d9d9;
   border-left: 4px solid #ed7a7a;
-  padding: 2%;
+  padding: 1%;
   margin-bottom: 2%;
 }
 

@@ -1,10 +1,10 @@
 <template>
   <main>
-    <DetailsView />
     <section class="payment-section">
       <ProgressBar />
       <RouterView />
     </section>
+    <DetailsView />
   </main>
 </template>
 
@@ -22,6 +22,7 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   @media (max-width: 1000px) {
     flex-direction: column;
   }
@@ -35,5 +36,11 @@ main {
   justify-content: center;
   background: $payment-background;
   border-radius: 0px 10px 10px 0px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    order: 1;
+    border-radius: 0px 0px 10px 10px;
+  }
 }
 </style>
