@@ -197,7 +197,7 @@ label {
 input {
   border-radius: 3px;
   border: 1px solid #757575;
-  width: 100%;
+  width: 200%;
   height: 24px;
 }
 h1 {
@@ -226,7 +226,7 @@ h2 {
 }
 
 #cpf {
-  width: 50%;
+  width: 100%;
 }
 Button {
   width: 150%;
