@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa do Flamengo",
+      "description": "Camisa oficial Clube de Regatas do Flamengo.",
+      "price": 250.0
+    },
+    {
+      "id": 2,
+      "name": "Jaqueta Calvin Klein",
+      "description": "Jaqueta preta Calvin Klein original tecido grosso",
+      "price": 500.0
+    },
+    {
+      "id": 3,
+      "name": "Meia Adidas",
+      "description": "Meia número 10 da adidas",
+      "price": 100.0
+    },
+    {
+      "id": 4,
+      "name": "Chuteira Nike",
+      "description": "Modelo de chuteira Nike utilizado na copa do mundo",
+      "price": 300.0
+    },
+    {
+      "id": 5,
+      "name": "Par de Straps",
+      "description": "Par de straps para se usar na academia. Alta qualidade de tecido.",
+      "price": 50.0
+    }
+  ]
+}
