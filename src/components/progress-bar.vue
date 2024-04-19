@@ -1,20 +1,36 @@
 <template>
   <div class="progress-div">
-    <p class="progress-number">1</p>
-    <div class="circle" />
-    <div class="circle" />
-    <div class="circle" />
-    <p class="progress-number">2</p>
-    <div class="circle" />
-    <div class="circle" />
-    <div class="circle" />
-    <p class="progress-number">3</p>
+    <p :class="{ 'progress-number': true, active: isStepActive(1) }">1</p>
+    <div :class="{ circle: true, active: isStepActive(1) }" />
+    <div :class="{ circle: true, active: isStepActive(1) }" />
+    <div :class="{ circle: true, active: isStepActive(1) }" />
+    <p :class="{ 'progress-number': true, active: isStepActive(2) }">2</p>
+    <div :class="{ circle: true, active: isStepActive(2) }" />
+    <div :class="{ circle: true, active: isStepActive(2) }" />
+    <div :class="{ circle: true, active: isStepActive(2) }" />
+    <p :class="{ 'progress-number': true, active: isStepActive(3) }">3</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "ProgressBar",
+  methods: {
+    isStepActive(step) {
+      const { path } = this.$route;
+      if (path === "/" && step === 1) {
+        return true;
+      } else if (
+        (path === "/pix" || path === "/credit" || path === "/bankslip") &&
+        (step === 1 || step === 2)
+      ) {
+        return true;
+      } else if (path === "/finalstep") {
+        return true;
+      }
+      return false;
+    },
+  },
 };
 </script>
 
@@ -46,5 +62,9 @@ export default {
   width: 6px;
   height: 6px;
   border-radius: 100%;
+}
+
+.active {
+  background: #ed7a7a;
 }
 </style>
