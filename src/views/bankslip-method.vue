@@ -9,6 +9,7 @@
           id="fullName"
           name="fullName"
           v-model="fullName"
+          @input="clearErrorMessage"
           required
         />
       </div>
@@ -20,6 +21,7 @@
           name="cpf"
           pattern="[0-9]{11}"
           v-model="cpf"
+          @input="clearErrorMessage"
           required
         />
       </div>
@@ -37,11 +39,14 @@
       :clickHandler="handleButtonClick"
       buttonText="Já fiz o pagamento"
     />
+    <p class="error">{{ errorMessage }}</p>
   </section>
 </template>
 
 <script>
 import Button from "../components/button.vue";
+import { mapMutations } from "vuex";
+
 export default {
   name: "BankSlip",
   components: {
@@ -49,12 +54,49 @@ export default {
   },
   data() {
     return {
-      fullName: "",
-      cpf: "",
       copyText: "Clique aqui para copiar o código",
+      buttonClicked: false,
     };
   },
+  computed: {
+    fullName: {
+      get() {
+        return this.$store.state.fullName;
+      },
+      set(value) {
+        this.updateFullName(value);
+      },
+    },
+    cpf: {
+      get() {
+        return this.$store.state.cpf;
+      },
+      set(value) {
+        this.updateCpf(value);
+      },
+    },
+    errorMessage() {
+      if (this.buttonClicked && (!this.fullName || !this.cpf)) {
+        return "Por favor, preencha todos os campos.";
+      } else {
+        return "";
+      }
+    },
+  },
   methods: {
+    ...mapMutations(["updateFullName", "updateCpf"]),
+    handleButtonClick() {
+      this.buttonClicked = true;
+      if (this.fullName && this.cpf) {
+        this.$router.push({ name: "FinalStep" });
+      }
+    },
+    clearErrorMessage() {
+      if (this.fullName && this.cpf) {
+        this.errorMessage = "";
+      }
+    },
+
     copyCode() {
       const bankSlipCode = this.$refs.bankSlipCode.innerText.trim();
       navigator.clipboard.writeText(bankSlipCode).then(() => {
@@ -64,12 +106,13 @@ export default {
         }, 1000);
       });
     },
-    handleButtonClick() {},
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../components/styles/variables.scss";
+
 section {
   display: flex;
   flex-direction: column;
@@ -114,5 +157,11 @@ input {
 
 Button {
   margin-top: 10%;
+}
+
+.error {
+  @each $property, $value in $error-text {
+    #{$property}: $value;
+  }
 }
 </style>

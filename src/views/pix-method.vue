@@ -228,6 +228,9 @@ h2 {
 #cpf {
   width: 50%;
 }
+Button {
+  width: 150%;
+}
 .error {
   @each $property, $value in $error-text {
     #{$property}: $value;
