@@ -57,6 +57,7 @@ export default {
       expirationTime: 10 * 60,
       remainingTime: 0,
       buttonClicked: false,
+      timerInterval: null,
     };
   },
   computed: {
@@ -114,43 +115,40 @@ export default {
         .toString()
         .padStart(2, "0")}`;
     },
+    updateQRCodeAndTimer() {
+      const qrCodeContent = `https://github.com/vitorlbarroso/teste-front-flame?timestamp=${Date.now()}`;
+      const qrCodeOptions = {
+        errorCorrectionLevel: "H",
+        type: "image/jpeg",
+        quality: 0.3,
+        margin: 1,
+        width: 200,
+        color: {
+          dark: "#000000",
+          light: "#ffffff",
+        },
+      };
+
+      const { generateQRCode } = useQRCode(qrCodeContent, qrCodeOptions);
+
+      generateQRCode().then((url) => {
+        this.qrCodeUrl = url;
+        this.qrCodeGeneratedTime = Date.now();
+        this.updateRemainingTime();
+        clearInterval(this.timerInterval);
+        this.timerInterval = setInterval(this.updateRemainingTime, 1000);
+      });
+    },
   },
   mounted() {
     const inputFields = document.querySelectorAll('input[type="text"]');
     inputFields.forEach((input) => {
       input.addEventListener("input", this.clearErrorMessage);
     });
-    const qrCodeContent = "https://github.com/vitorlbarroso/teste-front-flame";
-    const qrCodeOptions = {
-      errorCorrectionLevel: "H",
-      type: "image/jpeg",
-      quality: 0.3,
-      margin: 1,
-      width: 200,
-      color: {
-        dark: "#000000",
-        light: "#ffffff",
-      },
-    };
 
-    const { generateQRCode } = useQRCode(qrCodeContent, qrCodeOptions);
+    this.updateQRCodeAndTimer();
 
-    generateQRCode().then((url) => {
-      this.qrCodeUrl = url;
-      this.qrCodeGeneratedTime = Date.now();
-      this.updateRemainingTime();
-      this.timerInterval = setInterval(this.updateRemainingTime, 1000);
-    });
-
-    setInterval(async () => {
-      try {
-        this.qrCodeUrl = await generateQRCode();
-        this.qrCodeGeneratedTime = Date.now();
-        this.updateRemainingTime();
-      } catch (error) {
-        console.error("Error generating QR code:", error);
-      }
-    }, 600000);
+    setInterval(this.updateQRCodeAndTimer, 10 * 60 * 1000);
   },
   beforeDestroy() {
     clearInterval(this.timerInterval);
