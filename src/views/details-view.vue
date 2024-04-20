@@ -1,19 +1,21 @@
 <script setup>
 const name = "DetailsView";
+
 import { computed } from "vue";
+
 import ProductCard from "../components/product-card.vue";
 import useProducts from "../composables/useProducts";
 
 const { products } = useProducts();
-const totalProductsPrice = computed(() => {
+
+const productsPrice = computed(() => {
   return products.value.reduce((total, product) => total + product.price, 0);
 });
-const totalPrice = computed(() => {
-  return `R$ ${totalProductsPrice.value.toFixed(2)}`;
-});
 
-const totalWithShipping = computed(() => {
-  return `R$ ${(totalProductsPrice.value + 25).toFixed(2)}`;
+const additionalPrice = 100;
+
+const totalPrice = computed(() => {
+  return productsPrice.value + additionalPrice;
 });
 </script>
 
@@ -24,12 +26,14 @@ const totalWithShipping = computed(() => {
     <div class="details-info">
       <div class="prices">
         <h2 class="products-price">
-          Produtos: <span>{{ totalPrice }}</span>
+          Produtos: <span>R$ {{ productsPrice }}</span>
         </h2>
-        <h2 class="shipping">Frete: <span>R$ 25.00</span></h2>
+        <h2 class="shipping">
+          Adicionais: <span>R$ {{ additionalPrice }}</span>
+        </h2>
       </div>
       <h2 class="total">
-        Total: <span>{{ totalWithShipping }}</span>
+        Total: <span>R$ {{ totalPrice }}</span>
       </h2>
       <div class="products-list">
         <ProductCard :products="products" />

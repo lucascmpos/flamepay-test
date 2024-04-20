@@ -1,8 +1,8 @@
 <script>
+import { mapMutations } from "vuex";
+
 import Button from "../components/button.vue";
 import useQRCode from "../composables/useQRCode";
-
-import { mapMutations } from "vuex";
 
 export default {
   name: "PixMethod",
