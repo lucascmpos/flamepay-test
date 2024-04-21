@@ -23,7 +23,11 @@ const handleButtonClick = () => {
     <h1>Escolha o método de pagamento</h1>
     <ul>
       <li v-for="method in paymentMethods" :key="method">
-        <label class="radio-label" :for="method">
+        <label
+          class="radio-label"
+          :class="{ selected: selectedMethod === method }"
+          :for="method"
+        >
           <input
             type="radio"
             :id="method"
@@ -89,6 +93,13 @@ ul {
     background-color: $background-li-clicked;
     color: $text-li-clicked;
   }
+  &:checked {
+    background-color: #ed7a7a;
+  }
+  &.selected {
+    background-color: $background-li-clicked;
+    color: $text-li-clicked;
+  }
 }
 
 .radio-label input[type="radio"] {
@@ -100,7 +111,7 @@ ul {
   border: 2px solid #ed7a7a;
   outline: none;
   &:checked {
-    background-color: #ed7a7a;
+    background-color: #ffff;
   }
   &:hover {
     border-color: #ffffff;

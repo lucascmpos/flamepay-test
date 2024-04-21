@@ -60,7 +60,7 @@ section {
   }
 
   @media (max-width: 490px) {
-    width: 250px;
+    width: 278px;
   }
 }
 
@@ -88,6 +88,10 @@ section {
   justify-content: space-between;
 }
 
+span {
+  font-weight: 600;
+}
+
 .shipping {
   @each $property, $value in $primary-text {
     #{$property}: $value;
@@ -97,15 +101,10 @@ section {
   justify-content: space-between;
 }
 
-span {
-  font-weight: 600;
-}
-
 .total {
   @each $property, $value in $primary-text {
     #{$property}: $value;
   }
-  padding-top: 1%;
   border-top: 1px solid #d9d9d9;
   display: flex;
   justify-content: space-between;
@@ -116,7 +115,6 @@ span {
   height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-bottom: 10%;
   &::-webkit-scrollbar {
     width: 3px;
     background-color: #d9d9d9;

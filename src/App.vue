@@ -46,7 +46,7 @@ main {
     border-radius: 0px 0px 10px 10px;
   }
   @media (max-width: 490px) {
-    width: 255px;
+    width: 282px;
   }
 }
 </style>

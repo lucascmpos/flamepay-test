@@ -50,7 +50,7 @@ export default {
     border-top: 1px solid #d9d9d9;
   }
   @media (max-width: 490px) {
-    width: 180px;
+    width: 230px;
   }
 }
 .progress-number {
@@ -69,8 +69,8 @@ export default {
     height: 20px;
   }
   @media (max-width: 490px) {
-    width: 400px;
-    height: 20px;
+    height: 10px;
+    padding: 4px;
   }
 }
 
@@ -84,8 +84,9 @@ export default {
     height: 5px;
   }
   @media (max-width: 490px) {
-    width: 15px;
-    height: 5px;
+    width: 20px;
+    height: 1px;
+    padding: 2px;
   }
 }
 
