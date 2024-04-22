@@ -76,46 +76,26 @@ export default {
           type="text"
           id="fullName"
           name="fullName"
-          pattern="^[a-zA-ZÀ-ÿ\s]+$"
           v-model="fullName"
           required
         />
       </div>
       <div>
         <label for="cardNumber">Números do cartão</label>
-        <input
-          type="number"
-          id="cardNumber"
-          name="cardNumber"
-          pattern="^\d{16}$"
-          required
-        />
+        <input type="number" id="cardNumber" name="cardNumber" required />
       </div>
       <div>
         <label for="cpf">CPF do responsável pelo cartão</label>
-        <input
-          type="number"
-          id="cpf"
-          name="cpf"
-          pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
-          v-model="cpf"
-          required
-        />
+        <input type="number" id="cpf" name="cpf" v-model="cpf" required />
       </div>
       <div class="validityCVV">
         <div class="lastInputs">
           <label for="cardValidity">Validade</label>
-          <input
-            type="number"
-            id="cardValidity"
-            name="cardValidity"
-            pattern="^\d{2}/\d{2}$"
-            required
-          />
+          <input type="number" id="cardValidity" name="cardValidity" required />
         </div>
         <div class="lastInputs">
           <label for="cvv">CVV</label>
-          <input type="number" id="cvv" name="cvv" pattern="^\d{3}$" required />
+          <input type="number" id="cvv" name="cvv" required />
         </div>
       </div>
     </form>
