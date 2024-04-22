@@ -1,8 +1,8 @@
-###Para inicializar o projeto:
+### Para inicializar o projeto:
 
-#git clone https://github.com/lucascmpos/payment-checkout
-#npm i
-#npm run dev
-#json-server --watch products.json
+# git clone https://github.com/lucascmpos/payment-checkout
+# npm i
+# npm run dev
+# json-server --watch products.json
 
-##Pronto!
+## Pronto!
