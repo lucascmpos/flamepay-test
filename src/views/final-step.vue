@@ -1,6 +1,6 @@
 <script>
-import useQRCode from "../composables/useQRCode";
 import Button from "../components/button.vue";
+import useQRCode from "../composables/useQRCode";
 
 export default {
   name: "FinalStep",
